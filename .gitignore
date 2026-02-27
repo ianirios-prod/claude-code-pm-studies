@@ -1,0 +1,9 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Segurança — nunca versionar
+.env
+*.env
+secrets/
+api-keys/
