@@ -1,48 +1,20 @@
-# Claude Code — Projeto de Aprendizado para Technical AI PM
+# Claude Code — Guia de Aprendizado para Technical AI PM
 
-Este projeto foi criado para você praticar todas as funcionalidades do Claude Code com exemplos reais de Product Management.
+Este repositório captura tudo sobre **como usar Claude Code** como ferramenta de trabalho para PMs técnicos.
 
-**Empresa fictícia:** DataFlow AI — plataforma de analytics com IA para times de produto
-**Seu papel:** Technical AI PM
+Criado a partir de estudo do tutorial de Claude Code + expansões práticas para o contexto de AI PM.
 
 ---
 
-## Estrutura do Projeto
+## Estrutura
 
 ```
 claude-code-pm-learning/
-├── CLAUDE.md                               ← Memória persistente (lida em toda sessão)
-├── context/
-│   ├── business-info.md                    ← Contexto da empresa para prompts
-│   └── writing-styles.md                   ← Estilos de escrita por audiência
-├── strategy/
-│   ├── okrs-q1-2026.md                     ← OKRs do quarter com status atual
-│   ├── roadmap-2026.md                     ← Roadmap Q1–Q3 com temas estratégicos
-│   └── north-star.md                       ← North star metric e métricas de suporte
-├── metrics/
-│   ├── weekly-report-2026-02-17.md         ← Relatório semanal com alertas
-│   └── weekly-report-2026-02-24.md         ← Relatório com incidente NLQ
-├── customer-feedback/
-│   ├── nps-survey-q4-2025.md              ← NPS survey com 187 respostas
-│   └── support-tickets-feb-2026.md         ← Tickets do mês com análise de tendências
-├── competitive/
-│   └── mixpanel-amplitude-analysis.md      ← Análise competitiva com matriz de features
-├── experiments/
-│   ├── exp-001-insights-email-digest.md    ← Experimento concluído (email digest)
-│   └── exp-002-onboarding-checklist.md     ← Experimento em andamento (onboarding)
-├── reviews/
-│   ├── product-review-2026-02-19.md        ← Product review pré-lançamento
-│   └── executive-review-2026-02-26.md      ← Executive review com board
-├── user-research/
-│   ├── interview-ana-martins.md            ← Head of Product, fintech
-│   ├── interview-joao-silva.md             ← PM solo, e-commerce (risco de churn)
-│   └── interview-priya-chen.md        ← VP of Product, Enterprise
-├── meetings/
-│   ├── sprint-planning-2026-02-10.md
-│   ├── stakeholder-review-2026-02-17.md
-│   └── engineering-sync-2026-02-20.md
-├── prds/
-│   └── prd-example-ai-insights.md    ← Template de PRD
+├── CLAUDE.md                          ← Memória persistente do Claude Code
+├── learning-guide/
+│   ├── mental-models.md               ← 7 conceitos centrais para pensar sobre Claude Code
+│   ├── tips-and-tricks.md             ← Atalhos, hacks e armadilhas para evitar
+│   └── ai-tool-stack-for-pm.md        ← Stack completo de IA para Technical AI PM
 └── .claude/
     └── commands/
         ├── meeting-notes.md           ← /meeting-notes
@@ -57,196 +29,84 @@ claude-code-pm-learning/
 
 ---
 
-## Plano de Aprendizado — 10 Funcionalidades
+## O que está aqui
 
-### 1. Setup + CLAUDE.md (Memória Persistente)
-**O que é:** Arquivo que o Claude lê no início de toda sessão — seu contexto permanente.
-**Pratique:**
-```
-# Abra este projeto no terminal e rode:
-claude
+### `learning-guide/` — Conceitos e conhecimento
 
-# Teste se o Claude "sabe" seu contexto:
-"Qual é o maior problema que nossos usuários relataram sobre o AI Insights?"
-"Quem é o Eng Lead do meu time?"
-```
-**Por que importa para PMs:** Nunca mais precisar repetir "trabalho numa empresa de analytics B2B..." em todo prompt.
+**`mental-models.md`** — Os 7 conceitos centrais do vídeo, com expansões para Technical AI PM:
+- Prompt Engineering → Context Engineering
+- Claude Code como colaborador (não chatbot)
+- Visibilidade de tokens
+- A regra do `/clear`
+- Claude Code vs. N8N — quando usar cada um
+- Humano no loop — a regra de ouro atual
+- Dê ao LLM o trabalho que você odeia
 
----
+**`tips-and-tricks.md`** — Tudo que é prático:
+- Atalhos: `#`, `Shift+Tab`, `ESC`, `/clear`, `/init`
+- Hacks de produtividade: CLAUDE.md em subpastas, múltiplas instâncias, input de imagens
+- Stack de ferramentas ideal (Claude Pro + Cursor + N8N)
+- Armadilhas para evitar (yolo mode, muitos agentes, feature ideas por LLM)
 
-### 2. Leitura e Análise de Arquivos
-**O que é:** Claude lê arquivos da sua pasta e analisa o conteúdo.
-**Pratique:**
-```
-"Quantas entrevistas de usuário temos e quais são os perfis?"
-"Qual usuário tem maior risco de churn? Por que?"
-"Compare as dores da Ana Martins com as da Priya Chen — o que têm em comum?"
-```
-**Por que importa:** Análise de user research em segundos, sem copiar/colar manualmente.
+**`ai-tool-stack-for-pm.md`** — Quando usar cada ferramenta:
+- Claude Code: análise, escrita, PRDs, protótipos pontuais
+- N8N: automações recorrentes
+- Cursor: coding pesado e exploração do codebase
+- v0/Lovable: protótipos de UI rápidos
 
----
+### `.claude/commands/` — Commands reutilizáveis
 
-### 3. Web Search Integrada
-**O que é:** Claude busca informações atualizadas na web diretamente.
-**Pratique:**
-```
-"Pesquise como o Mixpanel e o Amplitude abordam personalização de insights por objetivo. Me dê um resumo com fontes."
-"O que há de mais recente sobre LLM evaluation frameworks para produtos de AI? Foco em 2025-2026."
-"Pesquise o pricing atual do PostHog e compare com o nosso."
-```
-**Por que importa:** Pesquisa competitiva sem sair do terminal.
+Templates de prompt prontos para invocar com `/nome-do-command`:
 
----
-
-### 4. Custom Commands (Slash Commands)
-**O que é:** Prompts salvos que você aciona com `/nome-do-comando`.
-**Pratique:**
-```
-/meeting-notes meetings/engineering-sync-2026-02-20.md
-
-/user-research user-research/
-
-/prd "Feature: Webhook API para integração com dashboards externos"
-
-/retro meetings/
-```
-**Por que importa:** Seus melhores prompts viram ferramentas reutilizáveis. Um `/prd` sempre produz PRDs no seu formato.
-
----
-
-### 5. Plan Mode (Shift+Tab)
-**O que é:** Modo onde o Claude planeja sem executar — você revisa o plano antes de aprovar.
-**Pratique:**
-```
-# Ative Plan Mode com Shift+Tab, depois:
-"Quero criar um relatório executivo consolidando as 3 entrevistas de usuário,
-o sprint planning e o stakeholder review para apresentar ao board.
-Planeje como você faria isso."
-
-# Revise o plano, corrija se necessário, depois saia do Plan Mode
-```
-**Por que importa:** Para tarefas complexas com múltiplos arquivos, ver o plano evita retrabalho.
-
----
-
-### 6. Sub-agentes em Paralelo
-**O que é:** Claude cria instâncias paralelas para processar tarefas simultaneamente.
-**Pratique:**
-```
-"Analise cada entrevista de usuário em paralelo e para cada uma gere:
-1. Top 3 dores
-2. Risco de churn (alto/médio/baixo + justificativa)
-3. Uma feature request prioritária
-Processe as 3 entrevistas ao mesmo tempo."
-```
-**Por que importa:** O que levaria 3 prompts sequenciais acontece em 1 (3x mais rápido para grandes volumes).
-
----
-
-### 7. Agentes Customizados
-**O que é:** Personas com contexto específico que revisam trabalho de diferentes perspectivas.
-**Pratique:** Crie um arquivo `.claude/agents/cto-reviewer.md`:
-```markdown
----
-name: CTO Reviewer
-color: red
-description: Reviews product decisions from a technical and scalability perspective
----
-You are Rafael Mendes, CTO da DataFlow AI. Você é técnico, direto, obcecado com performance e escalabilidade.
-Quando revisar um PRD ou decisão, foque em: viabilidade técnica, riscos de escalabilidade, tech debt,
-custo de infraestrutura. Seja cético. Faça perguntas difíceis.
-```
-Depois:
-```
-"Revise o PRD de AI Insights Personalization do ponto de vista do CTO Rafael,
-do Designer Camila e de um cliente Enterprise cético."
-```
-**Por que importa:** Obtenha feedback de múltiplas perspectivas sem precisar de reunião.
-
----
-
-### 8. MCPs (Model Context Protocol)
-**O que é:** Ferramentas externas que você conecta ao Claude Code.
-**MCPs úteis para PMs:**
-- **Slack MCP:** Rascunha e envia mensagens direto do terminal
-- **GitHub MCP:** Cria issues, PRs, lê código
-- **Google Drive MCP:** Acessa docs e sheets do Drive
-- **Linear/Jira MCP:** Cria e atualiza tickets
-
-**Para instalar um MCP:**
-```bash
-# Exemplo com Slack (substitua pelo seu token)
-claude mcp add slack -- npx -y @modelcontextprotocol/server-slack
-
-# Depois no Claude Code:
-"Redija uma mensagem no Slack para o canal #product-team resumindo os principais riscos
-identificados no engineering sync de hoje."
-```
-
----
-
-### 9. Execução de Código
-**O que é:** Claude escreve e executa código para você — análises, automações, scripts.
-**Pratique:**
-```
-"Escreva um script Python que leia todas as entrevistas de usuário nesta pasta
-e gere um CSV com: nome, empresa, plano, top 3 dores, risco de churn."
-
-"Crie um script que monitore um arquivo de métricas e me avise quando DAU
-cair mais de 5% em relação à média dos últimos 7 dias."
-```
-**Por que importa:** Automatize análises repetitivas sem precisar de data scientist para cada script.
-
----
-
-### 10. Prototipagem Rápida
-**O que é:** Claude gera código de protótipos funcionais direto no terminal.
-**Pratique:**
-```
-# Entre em Plan Mode primeiro (Shift+Tab), depois:
-"Crie um protótipo HTML/CSS/JS simples do AI Insights Feed com:
-- Lista de insights com badge de relevância por objetivo
-- Card expandível com 'por que esse insight apareceu'
-- Filtro por objetivo (churn, ativação, DAU)
-Use dados mockados das entrevistas que temos no projeto."
-```
-**Por que importa:** Valide UX com stakeholders antes de envolver engenharia.
-
----
-
-## Exercícios Avançados (combine features)
-
-### Exercício A — Pipeline Completo de User Research
-```
-1. /user-research user-research/
-2. "Com base nessa síntese, escreva um one-pager executivo para o Rafael
-   justificando priorizar o eval pipeline antes da personalização por OKR.
-   Use o estilo 'executivos' de context/writing-styles.md"
-```
-
-### Exercício B — Prep de Sprint Planning
-```
-1. "Analise em paralelo: as 3 entrevistas de usuário, o stakeholder review e
-   o engineering sync. Gere uma lista priorizada de histórias para o sprint 43
-   com justificativa baseada em evidências de cada arquivo."
-```
-
-### Exercício C — Análise Competitiva + PRD
-```
-1. /competitive "personalização de insights por objetivo em analytics de produto"
-2. "Com base na análise competitiva e nas entrevistas de usuário, escreva o PRD
-   completo para a feature de personalização por OKR usando /prd"
-```
-
----
-
-## Dicas Rápidas
-
-| Situação | O que fazer |
+| Command | Para que serve |
 |---|---|
-| Claude começou a fazer algo errado | Pressione ESC para parar |
-| Contexto da conversa está confuso | `/clear` para resetar |
-| Quer que lembre uma regra sempre | `#regra aqui` para adicionar ao CLAUDE.md |
-| Tarefa complexa com múltiplos arquivos | Use Plan Mode (Shift+Tab) primeiro |
-| Tokens acabando | `/clear` e comece nova sessão com contexto específico |
-| Claude cometeu erro num arquivo | Use `git diff` para ver o que mudou antes de aprovar |
+| `/meeting-notes` | Estruturar notas de reunião + action items |
+| `/user-research` | Analisar entrevista e extrair insights |
+| `/prd` | Criar PRD estruturado com acceptance criteria |
+| `/competitive` | Análise competitiva com matriz de features |
+| `/retro` | Retrospectiva de sprint ou projeto |
+| `/metrics-review` | Analisar métricas e identificar alertas |
+| `/experiment` | Estruturar A/B test com hipótese e guardrails |
+| `/feedback-synthesis` | Sintetizar feedback de múltiplas fontes |
+
+---
+
+## Repositório companion
+
+Para **praticar** com arquivos realistas (entrevistas, PRDs, métricas, etc.):
+→ `claude-code-pm-simulation` — empresa fictícia DataFlow AI como cenário de prática
+
+---
+
+## Como usar este repositório
+
+### 1. Aprender os conceitos
+Leia os arquivos em `learning-guide/` em ordem:
+1. `mental-models.md` — entenda os princípios
+2. `tips-and-tricks.md` — aprenda o que é prático
+3. `ai-tool-stack-for-pm.md` — decida quando usar o quê
+
+### 2. Usar os commands
+Abra o terminal nesta pasta e rode `claude`. Os commands ficam disponíveis automaticamente.
+
+```bash
+# Exemplo: analisar uma reunião
+/meeting-notes
+[cole as notas brutas da reunião]
+```
+
+### 3. Adaptar para seu contexto
+- Edite os commands em `.claude/commands/` para o seu produto e linguagem
+- Adicione regras no `CLAUDE.md` conforme você aprende o que funciona para você
+
+---
+
+## Referência rápida — Atalhos essenciais
+
+| Ação | Como |
+|---|---|
+| Adicionar regra ao CLAUDE.md | Comece com `#` |
+| Entrar em Plan Mode | `Shift+Tab` |
+| Parar o Claude | `ESC` |
+| Limpar contexto | `/clear` |
+| Inicializar projeto | `/init` |
