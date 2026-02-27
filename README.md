@@ -11,13 +11,31 @@ Este projeto foi criado para você praticar todas as funcionalidades do Claude C
 
 ```
 claude-code-pm-learning/
-├── CLAUDE.md                          ← Memória persistente (lida em toda sessão)
+├── CLAUDE.md                               ← Memória persistente (lida em toda sessão)
 ├── context/
-│   ├── business-info.md               ← Contexto da empresa para prompts
-│   └── writing-styles.md              ← Estilos de escrita por audiência
+│   ├── business-info.md                    ← Contexto da empresa para prompts
+│   └── writing-styles.md                   ← Estilos de escrita por audiência
+├── strategy/
+│   ├── okrs-q1-2026.md                     ← OKRs do quarter com status atual
+│   ├── roadmap-2026.md                     ← Roadmap Q1–Q3 com temas estratégicos
+│   └── north-star.md                       ← North star metric e métricas de suporte
+├── metrics/
+│   ├── weekly-report-2026-02-17.md         ← Relatório semanal com alertas
+│   └── weekly-report-2026-02-24.md         ← Relatório com incidente NLQ
+├── customer-feedback/
+│   ├── nps-survey-q4-2025.md              ← NPS survey com 187 respostas
+│   └── support-tickets-feb-2026.md         ← Tickets do mês com análise de tendências
+├── competitive/
+│   └── mixpanel-amplitude-analysis.md      ← Análise competitiva com matriz de features
+├── experiments/
+│   ├── exp-001-insights-email-digest.md    ← Experimento concluído (email digest)
+│   └── exp-002-onboarding-checklist.md     ← Experimento em andamento (onboarding)
+├── reviews/
+│   ├── product-review-2026-02-19.md        ← Product review pré-lançamento
+│   └── executive-review-2026-02-26.md      ← Executive review com board
 ├── user-research/
-│   ├── interview-ana-martins.md       ← Head of Product, fintech
-│   ├── interview-joao-silva.md        ← PM solo, e-commerce (risco de churn)
+│   ├── interview-ana-martins.md            ← Head of Product, fintech
+│   ├── interview-joao-silva.md             ← PM solo, e-commerce (risco de churn)
 │   └── interview-priya-chen.md        ← VP of Product, Enterprise
 ├── meetings/
 │   ├── sprint-planning-2026-02-10.md
@@ -31,7 +49,10 @@ claude-code-pm-learning/
         ├── user-research.md           ← /user-research
         ├── prd.md                     ← /prd
         ├── competitive.md             ← /competitive
-        └── retro.md                   ← /retro
+        ├── retro.md                   ← /retro
+        ├── metrics-review.md          ← /metrics-review
+        ├── experiment.md              ← /experiment
+        └── feedback-synthesis.md      ← /feedback-synthesis
 ```
 
 ---
